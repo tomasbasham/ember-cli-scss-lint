@@ -10,7 +10,7 @@ If you choose to compose your stylesheets using a preprocessor language such as 
 
 From within your Ember CLI project directory run:
 ```
-ember install:addon ember-cli-scss-lint
+ember install ember-cli-scss-lint
 ```
 
 **Note:** This addon requires that you first install a version of `scss-lint`. To do this run `gem install scss-lint` from the command line.

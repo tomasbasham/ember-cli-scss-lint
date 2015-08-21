@@ -22,7 +22,7 @@ module.exports = {
   included: function(app) {
     this.app = app;
 
-    // Merge the consuming application's options with the default options
+    // Merge the consuming application's options with the default options.
     this.app.options.scssLintOptions = defaults(this.app.options.scssLintOptions || {}, {
       config: path.join(this.app.project.root, '/.scss-lint.yml'),
       bundleExec: false
