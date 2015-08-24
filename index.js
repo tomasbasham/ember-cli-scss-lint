@@ -46,7 +46,7 @@ module.exports = {
    *   Tree to be merged.
    */
   lintTree: function(treeType, tree) {
-    if(treeType === 'app') {
+    if (treeType === 'app') {
       var mergedTrees = mergeTrees([this.app.trees.styles]);
       return scssLintTree(mergedTrees, this.app.options.scssLintOptions);
     }
