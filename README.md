@@ -58,7 +58,7 @@ linters:
     ...
 ```
 
-For more information on the available rules see the [scsslint linters documentation](https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md).
+For more information on the available rules see the [scss-lint linters documentation](https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md).
 
 ## Development
 

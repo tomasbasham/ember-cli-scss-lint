@@ -51,6 +51,13 @@ module.exports = {
       return scssLintTree(mergedTrees, this.app.options.scssLintOptions);
     }
 
-    return tree;
+    // There seems to be a bug here where the
+    // tree parameter is not always an object
+    // when treeType is test.
+    if (typeof tree === 'object') {
+      return tree;
+    } else {
+      return this.app.trees.styles;
+    }
   }
 };
