@@ -4,7 +4,7 @@
 var path = require('path')
  , defaults = require('lodash/object/defaults')
  , mergeTrees = require('broccoli-merge-trees')
- , scssLintTree = require('broccoli-scss-lint');
+ , scssLintTree = require('broccoli-scss-linter');
 
 module.exports = {
   name: 'ember-cli-scss-lint',
