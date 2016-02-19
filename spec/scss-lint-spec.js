@@ -1,5 +1,5 @@
 var expect = require('chai').expect
- , scssLintTree = require('broccoli-scss-lint');
+ , scssLintTree = require('broccoli-scss-linter');
 
 describe('scss-lint', function() {
   var tree, options;
