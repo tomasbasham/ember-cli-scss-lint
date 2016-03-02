@@ -3,8 +3,7 @@
 
 var path = require('path')
  , defaults = require('lodash/object/defaults')
- , mergeTrees = require('broccoli-merge-trees')
- , scssLintTree = require('broccoli-scss-linter');
+ , ScssLinter = require('broccoli-scss-linter');
 
 module.exports = {
   name: 'ember-cli-scss-lint',
@@ -47,8 +46,7 @@ module.exports = {
    */
   lintTree: function(treeType, tree) {
     if (treeType === 'app') {
-      var mergedTrees = mergeTrees([this.app.trees.styles]);
-      return scssLintTree(mergedTrees, this.app.options.scssLintOptions);
+      return new ScssLinter([this.app.trees.styles], this.app.options.scssLintOptions);
     }
 
     // There seems to be a bug here where the
