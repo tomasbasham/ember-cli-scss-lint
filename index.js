@@ -38,24 +38,14 @@ module.exports = {
    * @param {String} treeType
    *   Either 'app', 'tests' or 'addon'.
    *
-   * @param {Object} tree
-   *   The tree to be linted.
-   *
    * @return {Object}
    *   Tree to be merged.
    */
-  lintTree: function(treeType, tree) {
+  lintTree: function(treeType) {
     if (treeType === 'app') {
       return new ScssLinter([this.app.trees.styles], this.app.options.scssLintOptions);
     }
 
-    // There seems to be a bug here where the
-    // tree parameter is not always an object
-    // when treeType is test.
-    if (typeof tree === 'object') {
-      return tree;
-    } else {
-      return this.app.trees.styles;
-    }
+    return this.app.trees.styles;
   }
 };

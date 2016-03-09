@@ -1,26 +1,29 @@
 var expect = require('chai').expect
- , scssLintTree = require('broccoli-scss-linter');
+ , EmberApp = require('ember-cli/lib/broccoli/ember-app')
+ , ScssLinter = require('broccoli-scss-linter')
+ , emberCliScssLint = require('../index');
 
 describe('scss-lint', function() {
-  var tree, options;
+  var app = null;
 
   beforeEach(function() {
-    tree = {};
-    options = {
+    app = new EmberApp();
+    app.options.scssLintOptions = {
       config: '.scss-lint.yml',
-      bundleExec: false
+      bundleExec: true // Default is false.
     };
   });
 
-  it('throws an error if no options are given', function() {
-    expect(scssLintTree.bind(tree)).to.throw(TypeError);
+  it('merges options from the consuming application', function() {
+    emberCliScssLint.included(app);
+    expect(app.options.scssLintOptions).to.have.property('bundleExec').that.equals(true);
   });
 
-  it('throws an error if given invalid options', function() {
-    expect(scssLintTree.bind(tree, {})).to.throw(TypeError);
+  it('lints the styles tree when the tree type is app', function() {
+    expect(emberCliScssLint.lintTree('app')).to.be.an.instanceof(ScssLinter);
   });
 
-  it('accepts valid options', function() {
-    expect(scssLintTree.bind(tree, options)).to.be.ok;
+  it('returns the styles tree when the tree type is not app', function() {
+    expect(emberCliScssLint.lintTree('test')).to.deep.equal(app.trees.styles);
   });
 });
