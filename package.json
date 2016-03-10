@@ -47,7 +47,7 @@
     "lint"
   ],
   "dependencies": {
-    "broccoli-scss-linter": "2.0.1",
+    "broccoli-scss-linter": "2.0.2",
     "ember-cli-babel": "^5.1.5",
     "lodash": "^3.10.0"
   },
