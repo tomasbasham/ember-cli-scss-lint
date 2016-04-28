@@ -21,14 +21,14 @@ Every time you run an Ember CLI process that requires building the application (
 
 ```
 $ ember s
-version: 0.2.7
-Livereload server on port 35729
+version: 1.13.13
+Livereload server on http://localhost:49154
 Serving on http://localhost:4200/
-Processing mixins/_utilities.scss
-[default] Errors
-mixins/_utilities.scss:8 [W] PropertySortOrder: Properties should be ordered color, text-decoration
-mixins/_utilities.scss:9 [W] ColorKeyword: Color `white` should be written in hexadecimal form as #fff
-Build successful - 2332ms.
+
+[scss-lint] mixins/_utilities.scss:8 - PropertySortOrder: Properties should be ordered color, text-decoration
+[scss-lint] mixins/_utilities.scss:9 - ColorKeyword: Color `white` should be written in hexadecimal form as `#ffffff`
+
+Build successful - 24281ms.
 ```
 
 ### Configuration
@@ -39,23 +39,19 @@ Linting can be configured by creating a `.scss-lint.yml` file in the root direct
 
 ```yml
 linters:
-  linters:
-    BangFormat:
-      enabled: true
+  BangFormat:
+    enabled: true
 
-    BorderZero:
-      enabled: true
+  BorderZero:
+    enabled: true
 
-    ColorKeyword:
-      enabled: true
+  ColorKeyword:
+    enabled: true
 
-    Comment:
-      enabled: true
+  Comment:
+    enabled: true
 
-    Compass::*:
-      enabled: true
-
-    ...
+  ...
 ```
 
 For more information on the available rules see the [scss-lint linters documentation](https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md).
