@@ -9,8 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:testall",
-    "spec": "mocha --reporter spec spec/**/*-spec.js"
+    "test": "mocha --reporter spec tests/spec.js"
   },
   "repository": "https://github.com/tomasbasham/ember-cli-scss-lint",
   "engines": {
@@ -19,6 +18,7 @@
   "author": "Tomas Basham <me@tomasbasham.co.uk>",
   "license": "MIT",
   "devDependencies": {
+    "broccoli": "^0.16.9",
     "broccoli-asset-rev": "^2.2.0",
     "chai": "^2.2.0",
     "ember-cli": "1.13.13",
@@ -34,9 +34,9 @@
     "ember-cli-sri": "^1.2.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "1.13.15",
+    "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
-    "ember-disable-prototype-extensions": "^1.0.0",
     "ember-try": "~0.0.8",
     "mocha": "^2.2.1"
   },
@@ -47,7 +47,8 @@
     "lint"
   ],
   "dependencies": {
-    "broccoli-scss-linter": "2.0.2",
+    "broccoli-merge-trees": "^1.1.4",
+    "broccoli-scss-linter": "tomasbasham/broccoli-scss-lint",
     "ember-cli-babel": "^5.1.5",
     "lodash": "^3.10.0"
   },

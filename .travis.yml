@@ -9,28 +9,21 @@ cache:
   directories:
     - node_modules
 
-env:
-  - EMBER_TRY_SCENARIO=default
-  - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
-
 matrix:
   fast_finish: true
-  allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
   - "npm config set spin false"
   - "npm install -g npm@^2"
   - "gem install scss-lint"
 
 install:
-  - npm install -g bower
   - npm install
-  - bower install
 
 script:
-  - ember try $EMBER_TRY_SCENARIO test
-  - npm run-script spec
+  - npm test
+
+notifications:
+  email: false
+  slack:
+    secure: "eyIpwsfZvW1aU7LoyhPAdM2ltCYtDXKnnvMsAxJ8po8/UliBoQVWJiCUdjw2i8DdGQVTppIM9M93GADJ7kjahJftVDjcvmf5vBUgXDtWrbZ2C68iNSLsqSmy/W49sQJ8gv8b4K/Q/LKJevCDqu6CYf2RPda6RmQtkRWdyXx7pgpy+qLMBYPtOzIdAjaZcwkw8tN6lZBduBNXRHFV8ym+87oBMp7dARCioqzR30HwN23HWqrX7Fl9u7NYTc8GCt5YDqryec+i6/U0hhFi7gj0LPO7217UCps9e/3CBAQ4Ybpc4H3p+3Ya84RZbky/taBNQWgWU+rVR7AktMtQXpe5nLX8vbquJC3GThAzcSPsqE5Drs4jXhsXEvEDXWd2N9iDEpEy4IbJ0D7DTIz7A3hzwoJvzlvIArwZG4lKubgDDJCp9tKKPanx2ZlbfT5U7iqq/egD3a8UztomCXS1Nea7tGsylX2I5H+vePy8NK5jUic74Zx5uDQIdxgVjEm1kgM/bJOJ38f+JjE1+dpaqosCB7qSyW9XVIkxyF+2Z/dc1oKLiV9bwnvgq1EgAKdM0rcuHzglGsydseRsqYcpIlLOmd7AHJsJ3JvZtrjbMGIwwwZM2XDUOrI6GeNz/FbXETRe0YT79oUa/MfpU5ElurHj+HpWMgacleXP3i0ENLShZgg="
