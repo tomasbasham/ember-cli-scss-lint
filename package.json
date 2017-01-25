@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-scss-lint",
   "version": "1.0.1",
-  "description": "An ember-cli addon to integrate scss-lint for standards adherence and improved style consistency.",
+  "description": "An ember-cli addon to integrate sass-lint for standards adherence and improved style consistency.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -38,17 +38,20 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-try": "~0.0.8",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "sinon": "^1.17.7"
   },
   "keywords": [
     "ember-addon",
+    "sass-lint",
     "scss-lint",
+    "sass",
     "scss",
     "lint"
   ],
   "dependencies": {
     "broccoli-merge-trees": "^1.1.4",
-    "broccoli-scss-linter": "tomasbasham/broccoli-scss-lint",
+    "broccoli-scss-linter": "tomasbasham/broccoli-scss-linter",
     "ember-cli-babel": "^5.1.5",
     "lodash": "^3.10.0"
   },

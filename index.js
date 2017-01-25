@@ -20,14 +20,11 @@ module.exports = {
    *   An EmberApp instance.
    */
   included: function(app) {
-    if (!app.isTestingAddon) {
-      this._super.included.call(this, app);
-    }
+    this._super.included.call(this, app);
 
     // Merge the consuming application's options with the default options.
     this.scssLintOptions = defaults(app.options.scssLintOptions || {}, {
-      config: path.join(app.project.root, '/.scss-lint.yml'),
-      bundleExec: false
+      config: path.join(app.project.root, '.sass-lint.yml')
     });
 
     this.app = app;
@@ -48,8 +45,8 @@ module.exports = {
    */
   lintTree: function(treeType) {
     if (treeType === 'app') {
-      var stylesTree = mergeTrees([this.app.trees.styles])
-      return new ScssLinter(stylesTree, this.app.options.scssLintOptions);
+      var mergedTrees = mergeTrees([this.app.trees.styles])
+      return new ScssLinter(mergedTrees, this.scssLintOptions);
     }
 
     return this.app.trees.styles;
