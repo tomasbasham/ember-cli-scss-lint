@@ -43,12 +43,23 @@ module.exports = {
    * @return {Object}
    *   Tree to be merged.
    */
-  lintTree: function(treeType) {
+  lintTree: function(treeType, tree) {
     if (treeType === 'app') {
-      var mergedTrees = mergeTrees([this.app.trees.styles])
-      return new ScssLinter(mergedTrees, this.scssLintOptions);
+      var trees = [this.app.trees.app];
+
+      // Push any custom paths onto the trees array
+      // to be linted.
+      if (this.scssLintOptions.includePaths) {
+        toBeLinted.push.apply(toBeLinted, this.scssLintOptions.includePaths);
+      }
+
+      var linted = trees.map(function(tree) {
+        return new ScssLinter(mergeTrees([tree]), this.scssLintOptions);
+      }, this);
+
+      return mergeTrees(linted);
     }
 
-    return this.app.trees.styles;
+    return tree;
   }
 };

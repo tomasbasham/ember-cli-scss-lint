@@ -117,7 +117,7 @@ function dummyFactory(sourcePath, options) {
       root: sourcePath
     },
     trees: {
-      styles: sourcePath
+      app: sourcePath
     }
   });
 }
