@@ -24,7 +24,8 @@ module.exports = {
 
     // Merge the consuming application's options with the default options.
     this.scssLintOptions = defaults(app.options.scssLintOptions || {}, {
-      config: path.join(app.project.root, '.sass-lint.yml')
+      config: path.join(app.project.root, '.sass-lint.yml'),
+      testGenerator: 'qunit'
     });
 
     this.app = app;
