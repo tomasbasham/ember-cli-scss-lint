@@ -9,30 +9,6 @@ var assert = require('chai').assert
 
 var sandbox, builder, errors = [];
 
-/*
- * Hook into the linter plugin that pushes
- * all errors into a local errors array
- * which can be asserted against.
- *
- * @method postProcess
- *
- * @param {Object} results
- *   Results from a single linting task. This consists of the linting report and the original output.
- *
- * @return {Object}
- *   Results of the post processing.
- */
-function postProcess(results) {
-  var report = results.report;
-  var output = results.output;
-
-  if (report.errorCount || report.warningCount) {
-    errors = errors.concat(report.messages);
-  }
-
-  return { output: output };
-}
-
 // Default linting function using the `app`
 // tree type.
 var lint = dummyTreeBuilder('app');
@@ -64,19 +40,19 @@ describe('ember-cli-scss-lint', function() {
       return true;
     });
 
-    return lint('tests/dummy').then(function() {
+    return lint('tests/dummy/app').then(function() {
       assert.ok(stub.calledOnce);
     });
   });
 
   it('lints the styles tree from the dummy app', function() {
     var expected = [
-      'Selectors must be placed on new lines',
       'Color \'white\' should be written in its hexadecimal form #ffffff',
-      'Color literals such as \'white\' should only be used in variable declarations'
+      'Color literals such as \'white\' should only be used in variable declarations',
+      'Selectors must be placed on new lines'
     ];
 
-    return lint('tests/dummy').then(function() {
+    return lint('tests/dummy/app').then(function() {
       assert.lengthOf(errors, 3);
       expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
     });
@@ -98,15 +74,64 @@ describe('ember-cli-scss-lint', function() {
       }
     };
 
-    return lint('tests/dummy', options).then(function() {
+    return lint('tests/dummy/app', options).then(function() {
       assert.lengthOf(errors, 2);
       expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
     });
   });
+
+  it('ignores file specified within the linting configuration', function() {
+    var expected = [
+      'Selectors must be placed on new lines'
+    ];
+
+    var options = {
+      options: {
+        scssLintOptions: {
+          config: '.scss-lint-ignore-file.yml'
+        }
+      }
+    };
+
+    return lint('tests/dummy/app', options).then(function() {
+      assert.lengthOf(errors, 1);
+      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+    });
+  });
+
+  it('ignored files specified within the linting configuration', function() {
+    var expected = [
+      'Selectors must be placed on new lines'
+    ];
+
+    var options = {
+      options: {
+        scssLintOptions: {
+          config: '.scss-lint-ignore-files.yml'
+        }
+      }
+    };
+
+    return lint('tests/dummy/app', options).then(function() {
+      assert.lengthOf(errors, 1);
+      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+    });
+  })
 });
 
+function postProcess(results) {
+  var report = results.report;
+  var output = results.output;
+
+  if (report.errorCount || report.warningCount) {
+    errors = errors.concat(report.messages);
+  }
+
+  return { output: output };
+}
+
 function dummyFactory(sourcePath, options) {
-  return merge(options || {}, {
+  return merge({
     options: {
       scssLintOptions: {
         config: '.scss-lint.yml',
@@ -119,7 +144,7 @@ function dummyFactory(sourcePath, options) {
     trees: {
       app: sourcePath
     }
-  });
+  }, options || {});
 }
 
 function dummyTreeBuilder(tree) {
