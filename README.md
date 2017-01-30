@@ -89,6 +89,29 @@ module.exports = function(defaults) {
 
 For more information on the available rules see the [sass-lint linters documentation](https://github.com/sasstools/sass-lint/tree/master/docs/rules).
 
+#### Adding trees
+
+By default this addon forwards the entire app tree to be linted, but will not lint any files outside of the `app` folder. For most use cases this will be sufficient, but for others this is limiting. If for example you wish to lint files contained within the `vendor` tree you must tell the addon to do so. This can be done within the `ember-cli-build.js` file.
+
+##### <a name="trees-example"></a>Example:
+
+```JavaScript
+// ember-cli-build.js
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+module.exports = function(defaults) {
+  var app = new EmberApp(defaults, {
+    scssLintOptions: {
+      includedPaths: [
+        'vendor'
+      ]
+    }
+  });
+
+  return app.toTree();
+};
+```
+
 ## Development
 
 ### Installation
