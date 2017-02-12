@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "broccoli-merge-trees": "^1.1.4",
-    "broccoli-scss-linter": "tomasbasham/broccoli-scss-linter",
+    "broccoli-scss-linter": "^3.0.0",
     "ember-cli-babel": "^5.1.5",
     "lodash": "^3.10.0"
   },
