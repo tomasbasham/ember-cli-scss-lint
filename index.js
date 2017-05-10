@@ -60,7 +60,5 @@ module.exports = {
 
       return mergeTrees(linted);
     }
-
-    return tree;
   }
 };
