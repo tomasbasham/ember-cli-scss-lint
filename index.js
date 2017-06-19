@@ -4,6 +4,7 @@
 var path = require('path')
  , defaults = require('lodash/object/defaults')
  , mergeTrees = require('broccoli-merge-trees')
+ , Funnel = require('broccoli-funnel')
  , ScssLinter = require('broccoli-scss-linter');
 
 module.exports = {
@@ -55,6 +56,7 @@ module.exports = {
       }
 
       var linted = trees.map(function(tree) {
+        let filteredTreeToBeLinted = new Funnel(tree, { exclude: '**/*.js' });
         return new ScssLinter(mergeTrees([tree]), this.scssLintOptions);
       }, this);
 

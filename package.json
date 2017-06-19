@@ -50,6 +50,7 @@
     "lint"
   ],
   "dependencies": {
+    "broccoli-funnel": "^1.2.0",
     "broccoli-merge-trees": "^1.1.4",
     "broccoli-scss-linter": "^3.0.0",
     "ember-cli-babel": "^5.1.5",
