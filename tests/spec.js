@@ -1,17 +1,17 @@
 /* jshint node: true */
 'use strict';
 
-var assert = require('chai').assert
-  , merge = require('lodash/object/merge')
-  , broccoli = require('broccoli')
-  , scssLint = require('../')
-  , Sinon = require('sinon');
+const assert = require('chai').assert
+const merge = require('lodash/object/merge')
+const broccoli = require('broccoli')
+const scssLint = require('../')
+const Sinon = require('sinon');
 
-var sandbox, builder, errors = [];
+let sandbox, builder, errors = [];
 
 // Default linting function using the `app`
 // tree type.
-var lint = dummyTreeBuilder('app');
+const lint = dummyTreeBuilder('app');
 
 describe('ember-cli-scss-lint', function() {
   beforeEach(function() {
@@ -36,7 +36,7 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('is aware of calls to super', function() {
-    var stub = sandbox.stub(scssLint._super, 'included', function() {
+    const stub = sandbox.stub(scssLint._super, 'included', function() {
       return true;
     });
 
@@ -46,7 +46,7 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('lints the styles tree from the dummy app', function() {
-    var expected = [
+    const expected = [
       'Color \'white\' should be written in its hexadecimal form #ffffff',
       'Color literals such as \'white\' should only be used in variable declarations',
       'Selectors must be placed on new lines'
@@ -59,12 +59,12 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('accepts configuration values from the dummy app', function() {
-    var expected = [
+    const expected = [
       'Color \'white\' should be written in its hexadecimal form #ffffff',
       'Color literals such as \'white\' should only be used in variable declarations'
     ];
 
-    var options = {
+    const options = {
       options: {
         scssLintOptions: {
           rules: {
@@ -81,11 +81,11 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('ignores file specified within the linting configuration', function() {
-    var expected = [
+    const expected = [
       'Selectors must be placed on new lines'
     ];
 
-    var options = {
+    const options = {
       options: {
         scssLintOptions: {
           config: '.scss-lint-ignore-file.yml'
@@ -100,11 +100,11 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('ignored files specified within the linting configuration', function() {
-    var expected = [
+    const expected = [
       'Selectors must be placed on new lines'
     ];
 
-    var options = {
+    const options = {
       options: {
         scssLintOptions: {
           config: '.scss-lint-ignore-files.yml'
@@ -120,8 +120,8 @@ describe('ember-cli-scss-lint', function() {
 });
 
 function postProcess(results) {
-  var report = results.report;
-  var output = results.output;
+  const report = results.report;
+  const output = results.output;
 
   if (report.errorCount || report.warningCount) {
     errors = errors.concat(report.messages);
@@ -149,11 +149,11 @@ function dummyFactory(sourcePath, options) {
 
 function dummyTreeBuilder(tree) {
   return function(sourcePath, options) {
-    var dummy = dummyFactory(sourcePath, options);
+    const dummy = dummyFactory(sourcePath, options);
     scssLint.included(dummy);
 
     // Create a new broccoli builder.
-    var node = scssLint.lintTree(tree);
+    const node = scssLint.lintTree(tree);
     builder = new broccoli.Builder(node);
 
     // Returns a promise.

@@ -1,11 +1,11 @@
 /* eslint-env node */
 'use strict';
 
-var path = require('path')
- , defaults = require('lodash/object/defaults')
- , mergeTrees = require('broccoli-merge-trees')
- , Funnel = require('broccoli-funnel')
- , ScssLinter = require('broccoli-scss-linter');
+const path = require('path');
+const defaults = require('lodash/object/defaults');
+const mergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
+const ScssLinter = require('broccoli-scss-linter');
 
 module.exports = {
   name: 'ember-cli-scss-lint',
@@ -47,7 +47,7 @@ module.exports = {
    */
   lintTree: function(treeType, tree) {
     if (treeType === 'app') {
-      var trees = [this.app.trees.app];
+      let trees = [this.app.trees.app];
 
       // Push any custom paths onto the trees array
       // to be linted.
@@ -55,8 +55,8 @@ module.exports = {
         trees.push.apply(trees, this.scssLintOptions.includePaths);
       }
 
-      var linted = trees.map(function(tree) {
-        let filteredTreeToBeLinted = new Funnel(tree, { exclude: '**/*.js' });
+      const linted = trees.map(function(tree) {
+        const filteredTreeToBeLinted = new Funnel(tree, { exclude: ['**/*.js'] });
         return new ScssLinter(mergeTrees([filteredTreeToBeLinted]), this.scssLintOptions);
       }, this);
 
