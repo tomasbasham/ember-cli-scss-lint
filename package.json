@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-scss-lint",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "An ember-cli addon to integrate sass-lint for standards adherence and improved style consistency.",
   "directories": {
     "doc": "doc",
