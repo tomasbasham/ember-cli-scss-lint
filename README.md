@@ -1,6 +1,6 @@
 # Ember-cli-scss-lint [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-scss-lint.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-scss-lint)
 
-An [Ember CLI](http://www.ember-cli.com/) addon to integrate [sass-lint](https://github.com/sasstools/sass-lint) for standards adherence and improved style consistency.
+An [Ember CLI](https://ember-cli.com/) addon to integrate [sass-lint](https://github.com/sasstools/sass-lint) for standards adherence and improved style consistency.
 
 One of the many great features of Ember CLI is its rich toolset surrounding the framework such as jshint. This provides you with the ability to more easily write consistent and self documenting code that any developer could understand. However there is currently no similar feature to lint your stylesheets.
 
@@ -116,17 +116,18 @@ module.exports = function(defaults) {
 
 ### Installation
 
-* `git clone` this repository
+* `git clone <repository-url>` this repository
+* `cd ember-cli-scss-lint`
 * `npm install`
-* `bower install`
 
 ### Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests
 
+* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
@@ -134,4 +135,4 @@ module.exports = function(defaults) {
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
