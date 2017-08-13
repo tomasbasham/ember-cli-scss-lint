@@ -2,7 +2,7 @@
 
 An [Ember CLI](https://ember-cli.com/) addon to integrate [sass-lint](https://github.com/sasstools/sass-lint) for standards adherence and improved style consistency.
 
-One of the many great features of Ember CLI is its rich toolset surrounding the framework such as jshint. This provides you with the ability to more easily write consistent and self documenting code that any developer could understand. However there is currently no similar feature to lint your stylesheets.
+One of the many great features of Ember CLI is its rich toolset surrounding the framework such as eslint. This provides you with the ability to more easily write consistent and self documenting code that any developer could understand. However there is currently no similar feature to lint your stylesheets.
 
 If you choose to compose your stylesheets using a preprocessor language such as SCSS you will equally find no support to ensure your code follows best practice. This addon solves this by integrating the `sass-lint` nodejs package into the Ember CLI build process.
 
@@ -39,7 +39,7 @@ Build successful - 24281ms.
 
 #### sass-lint.yml
 
-Linting can be configured by creating a `.sass-lint.yml` file in the root directory of your Ember CLI project alongside your `.jshintrc` file. If you already have a config for `scss-lint`, you can instantly convert it to the equivalent `sass-lint` config [here](sasstools.github.io/make-sass-lint-config).
+Linting can be configured by creating a `.sass-lint.yml` file in the root directory of your Ember CLI project alongside your `.eslintrc` file. If you already have a config for `scss-lint`, you can instantly convert it to the equivalent `sass-lint` config [here](sasstools.github.io/make-sass-lint-config).
 
 ##### <a name="configuration-example"></a>Example:
 

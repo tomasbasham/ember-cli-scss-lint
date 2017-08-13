@@ -32,7 +32,7 @@ install:
   - npm install
 
 script:
-  npm test
+  - npm test
 
 notifications:
   email: false
