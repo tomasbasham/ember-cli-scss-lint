@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 const path = require('path');
@@ -45,7 +44,7 @@ module.exports = {
    * @return {Object}
    *   Tree to be merged.
    */
-  lintTree: function(treeType, tree) {
+  lintTree: function(treeType) {
     if (treeType === 'app') {
       let trees = [this.app.trees.app];
 

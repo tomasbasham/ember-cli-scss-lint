@@ -1,4 +1,4 @@
-# Ember-cli-scss-lint [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-scss-lint.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-scss-lint)
+# ember-cli-scss-lint [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-scss-lint.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-scss-lint)
 
 An [Ember CLI](https://ember-cli.com/) addon to integrate
 [sass-lint](https://github.com/sasstools/sass-lint) for standards adherence and
@@ -95,10 +95,10 @@ condition.
 
 ```JavaScript
 // ember-cli-build.js
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     scssLintOptions: {
       rules: [
         'border-zero': 2,
@@ -126,10 +126,10 @@ can be done within the `ember-cli-build.js` file.
 
 ```JavaScript
 // ember-cli-build.js
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     scssLintOptions: {
       includePaths: [
         'vendor'

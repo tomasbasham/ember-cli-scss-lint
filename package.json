@@ -1,46 +1,7 @@
 {
   "name": "ember-cli-scss-lint",
   "version": "2.2.0",
-  "description": "An ember-cli addon to integrate sass-lint for standards adherence and improved style consistency.",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
-  "scripts": {
-    "build": "ember build",
-    "start": "ember server",
-    "test": "mocha --reporter spec tests/spec.js"
-  },
-  "repository": "https://github.com/tomasbasham/ember-cli-scss-lint",
-  "engines": {
-    "node": ">= 4"
-  },
-  "author": "Tomas Basham <me@tomasbasham.co.uk>",
-  "license": "MIT",
-  "devDependencies": {
-    "broccoli": "^1.1.2",
-    "broccoli-asset-rev": "^2.4.5",
-    "chai": "^2.2.0",
-    "ember-ajax": "^3.0.0",
-    "ember-cli": "2.13.2",
-    "ember-cli-dependency-checker": "^1.3.0",
-    "ember-cli-eslint": "^3.0.0",
-    "ember-cli-htmlbars": "^1.1.1",
-    "ember-cli-htmlbars-inline-precompile": "^0.4.0",
-    "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.0.0",
-    "ember-cli-shims": "^1.1.0",
-    "ember-cli-sri": "^2.1.0",
-    "ember-cli-uglify": "^1.2.0",
-    "ember-disable-prototype-extensions": "^1.1.0",
-    "ember-export-application-global": "^2.0.0",
-    "ember-load-initializers": "^1.0.0",
-    "ember-resolver": "^4.0.0",
-    "ember-source": "~2.13.0",
-    "loader.js": "^4.2.3",
-    "mocha": "^2.2.1",
-    "sinon": "^1.17.7"
-  },
+  "description": "An ember-cli addon to integrate sass-lint for standards adherence and improved style consistency",
   "keywords": [
     "ember-addon",
     "sass-lint",
@@ -49,12 +10,54 @@
     "scss",
     "lint"
   ],
+  "license": "MIT",
+  "author": "Tomas Basham <me@tomasbasham.co.uk>",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "repository": "https://github.com/tomasbasham/ember-cli-scss-lint",
+  "scripts": {
+    "build": "ember build",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "start": "ember serve",
+    "test": "mocha --reporter spec tests/spec.js"
+  },
   "dependencies": {
     "broccoli-funnel": "^1.2.0",
     "broccoli-merge-trees": "^1.1.4",
     "broccoli-scss-linter": "^3.0.0",
-    "ember-cli-babel": "^6.0.0",
+    "ember-cli-babel": "^6.6.0",
     "lodash": "^3.10.0"
+  },
+  "devDependencies": {
+    "broccoli": "^1.1.2",
+    "broccoli-asset-rev": "^2.4.5",
+    "chai": "^2.2.0",
+    "ember-ajax": "^3.0.0",
+    "ember-cli": "~2.18.1",
+    "ember-cli-dependency-checker": "^2.0.0",
+    "ember-cli-eslint": "^4.2.1",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "ember-cli-inject-live-reload": "^1.4.1",
+    "ember-cli-qunit": "^4.1.1",
+    "ember-cli-shims": "^1.2.0",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-uglify": "^2.0.0",
+    "ember-disable-prototype-extensions": "^1.1.2",
+    "ember-export-application-global": "^2.0.0",
+    "ember-load-initializers": "^1.0.0",
+    "ember-resolver": "^4.0.0",
+    "ember-source": "~2.18.0",
+    "eslint-plugin-ember": "^5.0.0",
+    "eslint-plugin-node": "^5.2.1",
+    "loader.js": "^4.2.3",
+    "mocha": "^2.2.1",
+    "sinon": "^1.17.7"
+  },
+  "engines": {
+    "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
