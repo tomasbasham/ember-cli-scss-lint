@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const defaults = require('lodash/object/defaults');
+const defaults = require('lodash.defaults');
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const ScssLinter = require('broccoli-scss-linter');

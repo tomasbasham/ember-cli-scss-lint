@@ -24,14 +24,14 @@
     "test": "mocha --reporter spec tests/spec.js"
   },
   "dependencies": {
-    "broccoli-funnel": "^1.2.0",
-    "broccoli-merge-trees": "^1.1.4",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
     "broccoli-scss-linter": "^3.0.0",
     "ember-cli-babel": "^6.6.0",
-    "lodash": "^3.10.0"
+    "lodash.defaults": "^4.2.0"
   },
   "devDependencies": {
-    "broccoli": "^1.1.2",
+    "broccoli": "^1.1.4",
     "broccoli-asset-rev": "^2.4.5",
     "chai": "^2.2.0",
     "ember-ajax": "^3.0.0",
@@ -53,8 +53,9 @@
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^5.2.1",
     "loader.js": "^4.2.3",
-    "mocha": "^2.2.1",
-    "sinon": "^1.17.7"
+    "lodash.merge": "^4.6.1",
+    "mocha": "^4.0.1",
+    "sinon": "^2.1.0"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"

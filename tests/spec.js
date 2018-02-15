@@ -1,16 +1,13 @@
 'use strict';
 
 const assert = require('chai').assert
-const merge = require('lodash/object/merge')
+const merge = require('lodash.merge')
 const broccoli = require('broccoli')
 const scssLint = require('../')
 const Sinon = require('sinon');
 
-let sandbox, builder, errors = [];
-
-// Default linting function using the `app`
-// tree type.
 const lint = dummyTreeBuilder('app');
+let sandbox, builder, errors;
 
 describe('ember-cli-scss-lint', function() {
   beforeEach(function() {
@@ -35,7 +32,7 @@ describe('ember-cli-scss-lint', function() {
   });
 
   it('is aware of calls to super', function() {
-    const stub = sandbox.stub(scssLint._super, 'included', function() {
+    const stub = sandbox.stub(scssLint._super, 'included').callsFake(function() {
       return true;
     });
 
@@ -51,9 +48,12 @@ describe('ember-cli-scss-lint', function() {
       'Selectors must be placed on new lines'
     ];
 
+    const assertMessage = function(message, index) {
+      assert.equal(errors[index].message, message);
+    };
+
     return lint('tests/dummy/app').then(function() {
-      assert.lengthOf(errors, 3);
-      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+      expected.forEach(assertMessage);
     });
   });
 
@@ -73,9 +73,12 @@ describe('ember-cli-scss-lint', function() {
       }
     };
 
+    const assertMessage = function(message, index) {
+      assert.equal(errors[index].message, message);
+    };
+
     return lint('tests/dummy/app', options).then(function() {
-      assert.lengthOf(errors, 2);
-      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+      expected.forEach(assertMessage);
     });
   });
 
@@ -92,9 +95,12 @@ describe('ember-cli-scss-lint', function() {
       }
     };
 
+    const assertMessage = function(message, index) {
+      assert.equal(errors[index].message, message);
+    };
+
     return lint('tests/dummy/app', options).then(function() {
-      assert.lengthOf(errors, 1);
-      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+      expected.forEach(assertMessage);
     });
   });
 
@@ -111,9 +117,12 @@ describe('ember-cli-scss-lint', function() {
       }
     };
 
+    const assertMessage = function(message, index) {
+      assert.equal(errors[index].message, message);
+    };
+
     return lint('tests/dummy/app', options).then(function() {
-      assert.lengthOf(errors, 1);
-      expected.forEach(function(message, index) { assert.equal(errors[index].message, message) });
+      expected.forEach(assertMessage);
     });
   })
 });
