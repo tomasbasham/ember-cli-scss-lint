@@ -7,7 +7,7 @@ const Funnel = require('broccoli-funnel');
 const ScssLinter = require('broccoli-scss-linter');
 
 module.exports = {
-  name: 'ember-cli-scss-lint',
+  name: require('./package').name,
 
   /*
    * Merge scss-lint configuration
