@@ -1,4 +1,4 @@
-# ember-cli-scss-lint [![Build Status](https://travis-ci.org/tomasbasham/ember-cli-scss-lint.svg?branch=master)](https://travis-ci.org/tomasbasham/ember-cli-scss-lint)
+# ember-cli-scss-lint [![Build Status](https://travis-ci.com/tomasbasham/ember-cli-scss-lint.svg?branch=master)](https://travis-ci.com/tomasbasham/ember-cli-scss-lint)
 
 An [Ember CLI](https://ember-cli.com/) addon to integrate
 [sass-lint](https://github.com/sasstools/sass-lint) for standards adherence and
