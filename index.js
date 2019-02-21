@@ -55,7 +55,7 @@ module.exports = {
       }
 
       const linted = trees.map(function(tree) {
-        const filteredTreeToBeLinted = new Funnel(tree, { exclude: ['**/*.js'] });
+        const filteredTreeToBeLinted = new Funnel(tree, { exclude: ['**/*.js'], destDir: tree });
         return new ScssLinter(mergeTrees([filteredTreeToBeLinted]), this.scssLintOptions);
       }, this);
 
