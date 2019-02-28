@@ -59,7 +59,7 @@ module.exports = {
         return new ScssLinter(mergeTrees([filteredTreeToBeLinted]), this.scssLintOptions);
       }, this);
 
-      return mergeTrees(linted);
+      return mergeTrees(linted, { overwrite : true });
     }
   }
 };
