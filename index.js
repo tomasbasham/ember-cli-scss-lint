@@ -2,7 +2,6 @@
 
 const path = require('path');
 const defaults = require('lodash.defaults');
-const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const ScssLinter = require('broccoli-scss-linter');
 
@@ -39,27 +38,21 @@ module.exports = {
    * @method lintTree
    *
    * @param {String} treeType
-   *   Either 'app', 'tests', 'templates', or 'addon'.
+   *   app, tests, templates, or addon
+   *
+   * @param {Tree} tree
+   *   tree of files (JavaScript files for app, tests, and addon types)
    *
    * @return {Object}
    *   Tree to be merged.
    */
-  lintTree: function(treeType) {
-    if (treeType === 'app') {
-      let trees = [this.app.trees.app];
+  lintTree: function(treeType, tree) {
+    const includePaths = this.scssLintOptions.includePaths || ['app'];
+    if (includePaths.indexOf(treeType) > -1) {
+      const filteredTreeToBeLinted = new Funnel(tree, { exclude: ['**/*.js'] });
+      const lintedTree =  new ScssLinter(filteredTreeToBeLinted, this.scssLintOptions);
 
-      // Push any custom paths onto the trees array
-      // to be linted.
-      if (this.scssLintOptions.includePaths) {
-        trees.push.apply(trees, this.scssLintOptions.includePaths);
-      }
-
-      const linted = trees.map(function(tree) {
-        const filteredTreeToBeLinted = new Funnel(tree, { exclude: ['**/*.js'] });
-        return new ScssLinter(mergeTrees([filteredTreeToBeLinted]), this.scssLintOptions);
-      }, this);
-
-      return mergeTrees(linted, { overwrite : true });
+      return lintedTree;
     }
   }
 };
